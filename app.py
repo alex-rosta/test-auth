@@ -2,6 +2,8 @@ from flask import Flask, redirect, url_for, session, render_template
 from flask_oidc import OpenIDConnect
 from authlib.integrations.flask_client import OAuth
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -10,9 +12,9 @@ oauth = OAuth(app)
 
 oauth.register(
     name='phx',
-    client_id='testauth',
-    client_secret='testauth',
-    server_metadata_url='https://idppreprod.regionsormland.se/testauth/.well-known/openid-configuration',
+    client_id=load_dotenv('client_id'),
+    client_secret=load_dotenv('client_secret'),
+    server_metadata_url=load_dotenv('server_metadata_url'),
     client_kwargs={'scope': 'openid profile email'},
 )
 
