@@ -3,10 +3,11 @@ from flask_oidc import OpenIDConnect
 from authlib.integrations.flask_client import OAuth
 import os
 from dotenv import load_dotenv
-load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+
+load_dotenv()
 
 oauth = OAuth(app)
 
@@ -24,7 +25,9 @@ def home():
 
 @app.route('/error')
 def error():
-    return render_template('error.html')
+    user = session.get('user')
+    registrationlevel = user.get('registrationlevel') if user else None
+    return render_template('error.html', registrationlevel=registrationlevel)
 
 @app.route('/result')
 def result():

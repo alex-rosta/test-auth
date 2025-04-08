@@ -1,20 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-pink-700 flex items-center justify-center min-h-screen">
-    <div class="bg-white shadow-md rounded-lg p-8 max-w-sm w-full">
-        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Authentication Information</h1>
-        <p class="text-gray-700 mb-4">You have successfully authenticated!</p>
-        <p class="text-gray-700 mb-4">Social Security Number: {{ ssn }}</p>
-        <p class="text-gray-700 mb-4">Given Name: {{ usergivenname }}</p>
-        <p class="text-gray-700 mb-4">Surname: {{ usersurname }}</p>
-        <p class="text-gray-700 mb-4">Registration Level: {{ registrationlevel }}</p>
-        <h2 class="text-md font-bold text-gray-800 mb-4">This means Region Sörmland has all the required information for you to access the environment using external access.</h2>
+{% extends "base.html" %}
+
+{% block title %}Authentication - Success{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+            <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-800">Authentication Success</h1>
+        <p class="text-gray-600 mt-2">You have successfully authenticated!</p>
     </div>
-</body>
-</html>
+
+    <div class="bg-gray-50 rounded-lg p-6 shadow-inner space-y-4 animate-fade-in" style="animation-delay: 0.3s">
+        <div class="grid grid-cols-3 gap-2 hover:bg-gray-100 p-2 rounded transition-colors duration-200">
+            <div class="text-gray-500 font-medium">SSN</div>
+            <div class="col-span-2 font-semibold text-gray-800">{{ ssn }}</div>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-2 hover:bg-gray-100 p-2 rounded transition-colors duration-200">
+            <div class="text-gray-500 font-medium">Given Name</div>
+            <div class="col-span-2 font-semibold text-gray-800">{{ usergivenname }}</div>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-2 hover:bg-gray-100 p-2 rounded transition-colors duration-200">
+            <div class="text-gray-500 font-medium">Surname</div>
+            <div class="col-span-2 font-semibold text-gray-800">{{ usersurname }}</div>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-2 hover:bg-gray-100 p-2 rounded transition-colors duration-200">
+            <div class="text-gray-500 font-medium">Level</div>
+            <div class="col-span-2">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    {{ registrationlevel }}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6 text-center">
+        <p class="text-gray-700 font-medium">Region Sörmland has all the required information for you to access the environment using external access.</p>
+    </div>
+    
+    <div class="mt-8 flex justify-center">
+        <a href="/logout" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+            <svg class="mr-2 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            </svg>
+            Sign Out
+        </a>
+    </div>
+</div>
+{% endblock %}
