@@ -12,9 +12,9 @@ oauth = OAuth(app)
 
 oauth.register(
     name='phx',
-    client_id=load_dotenv('client_id'),
-    client_secret=load_dotenv('client_secret'),
-    server_metadata_url=load_dotenv('server_metadata_url'),
+    client_id=os.getenv('client_id'),
+    client_secret=os.getenv('client_secret'),
+    server_metadata_url=os.getenv('server_metadata_url'),
     client_kwargs={'scope': 'openid profile email'},
 )
 
@@ -46,8 +46,7 @@ def login():
 def auth():
     token = oauth.phx.authorize_access_token()
     session['user'] = token['userinfo']
-    print(token['userinfo'])  # Debugging line to check the token content
-    # Store user information in session
+    print(token['userinfo'])
     return redirect('/result')
 
 @app.route('/logout')
