@@ -6,7 +6,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - client_id=testauth
-      - client_secret=testauth
+      - client_id=${client_id}
+      - client_secret=${client_secret}
       - server_metadata_url=https://idppreprod.regionsormland.se/testauth/.well-known/openid-configuration
     restart: unless-stopped
