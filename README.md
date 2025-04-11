@@ -1,7 +1,7 @@
 # Test Auth Project
 
 ## Overview
-This project is a Flask-based web application that uses OpenID Connect for authentication. It integrates with an external identity provider to retrieve specified claims from the ID-token provided by the Identity Provider. In this case PhenixID and the authentication method is Freja eID.
+This project is a Flask-based web application that uses OpenID Connect for authentication. It integrates with an external identity provider to retrieve specified claims from the ID-token provided by the Identity Provider. In this case PhenixID is the Identity Provider and the authentication method is Freja eID.
 The claims extracted are:
 ```yaml
 usergivenname: #firstname
@@ -24,7 +24,7 @@ server_metadata_url=<Your Server Metadata URL>
 ```yaml
 client_id=yourid
 client_secret=secret
-server_metadata_url=https://idppreprod.regionsormland.se/testauth/.well-known/openid-configuration
+server_metadata_url=https://youridp.example.com/testauth/.well-known/openid-configuration
 ```
 
 Replace the placeholder values with the actual credentials and metadata URL provided by your identity provider.
@@ -34,4 +34,6 @@ Replace the placeholder values with the actual credentials and metadata URL prov
 2. Ensure the `.env` file is properly configured.
 3. Run the application using `python app.py`.
 
-The application will be available at `http://0.0.0.0:5000`. 
+The application will be available at `http://localhost:5000`. 
+
+Dont forget to add `http://localhost:5000/auth` to your identity provider's allowed Redirect URI's.
