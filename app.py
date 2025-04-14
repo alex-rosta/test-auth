@@ -23,6 +23,10 @@ oauth.register(
 def home():
     return render_template('index.html')
 
+@app.route('/testfreja')
+def home():
+    return render_template('index.html')
+
 @app.route('/error')
 def error():
     user = session.get('user')
