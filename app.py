@@ -24,7 +24,7 @@ def home():
     return render_template('index.html')
 
 @app.route('/testfreja')
-def home():
+def freja():
     return render_template('index.html')
 
 @app.route('/error')
