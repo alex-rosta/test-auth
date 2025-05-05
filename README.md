@@ -10,6 +10,7 @@ registrationlevel: #freja registration level 'plus' is required
 ssn: #social security number
 country: #iso standard country code
 ```
+Make edits to these parts of the app to customize claims extraction.
 
 ## Required `.env` File
 To run this project, you need to create a `.env` file in the root directory of the project. The `.env` file should contain the following environment variables:
