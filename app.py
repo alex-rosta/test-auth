@@ -34,12 +34,14 @@ def result():
     user = session.get('user')
     ssn = user.get('ssn') if user else None
     usergivenname = user.get('usergivenname') if user else None
+    upi = user.get('upi') if user else None
+    frejaloalevel = user.get('frejaloalevel') if user else None
     usersurname = user.get('usersurname') if user else None
     registrationlevel = user.get('registrationlevel') if user else None
     documentcountry = user.get('documentcountry') if user else None
     if registrationlevel != "PLUS" or ssn is None:
         return redirect('/error')
-    return render_template('result.html', ssn=ssn, usergivenname=usergivenname, usersurname=usersurname, registrationlevel=registrationlevel, documentcountry=documentcountry)
+    return render_template('result.html', ssn=ssn, usergivenname=usergivenname, usersurname=usersurname, registrationlevel=registrationlevel, documentcountry=documentcountry, upi=upi, frejaloalevel=frejaloalevel)
 
 @app.route('/login')
 def login():
